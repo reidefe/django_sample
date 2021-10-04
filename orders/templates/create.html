@@ -22,7 +22,7 @@
     {% csrf_token %}
     <div class="col-6">
       {% csrf_token %}
-      {{ form}}
+      {{ form|crispy }}
     </div>  
   </div>
   
