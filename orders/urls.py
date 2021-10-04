@@ -1,6 +1,13 @@
 from django.urls import path, re_path
 from django.conf.urls import url
-from .views import OrderDetail, OrderList, OrderCreate, OrderDelete, OrderUpdate, GoodsCreate
+from .views import (
+    OrderDetail,
+    OrderList,
+    OrderCreate,
+    OrderDelete,
+    OrderUpdate,
+    GoodsCreate,
+)
 
 urlpatterns = [
     path("", OrderList.as_view(), name="home"),

@@ -1,6 +1,5 @@
-from typing import Any
+
 from django.db.models.expressions import When
-from django.http import request
 from django.shortcuts import render
 from django.views.generic import (
     CreateView,
@@ -11,13 +10,13 @@ from django.views.generic import (
 )
 from django.db import models
 from .models import Orders, Goods
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from typing import List, Dict, Any
 
 
 class OrderCreate(CreateView):
     model = Orders
-    # context_object_name = 'form'
+    
     template_name = "create.html"
     success_url = reverse_lazy("home")
     fields = ["counter_party", "quantity", "goods"]
@@ -28,14 +27,13 @@ class OrderList(ListView):
     context_object_name = "order_list"
     template_name = "home.html"
 
+   
 
 class GoodsCreate(CreateView):
     model = Goods
-    template_name = 'goods_create.html'
+    template_name = "goods_create.html"
     success_url = reverse_lazy("home")
     fields = ("name", "description", "price", "manufacturer")
-
-
 
 
 class OrderDelete(DeleteView):
@@ -58,7 +56,9 @@ class OrderDetail(DetailView):
         instance = self.get_object()
         order_pk = context["order_detail"].pk
         context["goods_detail"] = instance.goods
-        context["recommended_goods"] = Goods.objects.filter(manufacturer__startswith='c')
+        context["recommended_goods"] = Goods.objects.filter(
+            manufacturer__startswith="c"
+        )
         return context
 
 
