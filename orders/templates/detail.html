@@ -38,15 +38,20 @@
 <div class="=container-fluid"><h2> Goods you may like</h2>
     
         {% for reco in recommended_goods %}
-            <h5>
+        <ul>
+            <h3>
                 Name:
                 {{reco.name}} <br>
+            </h3>
+            <h5>
                 Description:
-                {{ reco.description }} <br>
+                {{reco.description}} <br>
+                Manufacturer:
+                {{ reco.manufacturer}} <br>
                 Price:
                 {{reco.price }}
             </h5>
-        
+        </ul>
         {% endfor %}
 
 </div>

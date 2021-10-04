@@ -57,7 +57,7 @@ class OrderDetail(DetailView):
         order_pk = context["order_detail"].pk
         context["goods_detail"] = instance.goods
         context["recommended_goods"] = Goods.objects.filter(
-            manufacturer__startswith="c"
+            manufacturer__startswith="A"
         )
         return context
 
